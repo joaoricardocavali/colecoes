@@ -1,5 +1,7 @@
 import React from "react";
 import CharacterRMList from "../../components/character-rm-list";
+import { GiMaterialsScience } from "react-icons/gi";
+import { CgPokemon } from 'react-icons/cg'
 
 const Home = ({ characters, setCharacters }) => {
   const handleOnSelect = ({ name }) => {
@@ -7,11 +9,17 @@ const Home = ({ characters, setCharacters }) => {
   };
 
   return (
-    <CharacterRMList
-      onSelect={handleOnSelect}
-      header="Sua coleção!"
-      characters={characters}
-    />
+    <>
+      <GiMaterialsScience  />
+      <CgPokemon />
+      <CharacterRMList
+        onSelect={handleOnSelect}
+        header="Sua coleção!"
+        characters={characters}
+        
+      />
+      
+    </>
   );
 };
 

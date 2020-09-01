@@ -9,16 +9,16 @@ const CharacterPokeList = ({ characters, header, onSelect = () => {} }) => {
       <StyledHeader>{header}</StyledHeader>
       <StyledList>
         {characters &&
-          characters.map(({ name, url }, key) => (
+          characters.map(({ name, image }, key) => (
 
             <StyledCard
               key={key}
               hoverable
               onClick={() => {
-                onSelect({ name, url });
+                onSelect({ name, image });
               }}
               
-              cover={<img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png`} />}
+              cover={<img src={image} />}
             >
               <Card.Meta title={name} />
             </StyledCard>

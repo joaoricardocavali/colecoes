@@ -7,7 +7,6 @@ const CharactersPoke = ({ setCharacters }) => {
     const { page } = useParams();
     const history = useHistory();
     const [characters, setCharactersAPI] = useState([]);
-    // const [images, setImages] = useState([]);
 
     const handleOnSelect = (newCharacter) => {
 
@@ -22,34 +21,38 @@ const CharactersPoke = ({ setCharacters }) => {
     };
 
     useEffect(() => {
+        const pokemons = [];
         fetch(`https://pokeapi.co/api/v2/pokemon?limit=150`)
             .then((res) => res.json())
-            .then(({ results }) => 
-                setCharactersAPI(results));
-                // setImages(characters.url)
-                
-            
-    }, [history, page, setCharacters]);
-    // console.log(characters)
-    // const url = characters.url
-    // const image = ""
-    // const brokenUrl = url.split("/");
-    // const id = brokenUrl[brokenUrl.length - 1]
-    // setCharactersAPI(...characters, image:imagem)
-    const id = 132;
+            .then(({ results }) =>
+                results.map((item) => {
+                    const brokenUrl = item.url.split("/")
+                    const id = brokenUrl[brokenUrl.length - 2]
+                    pokemons.push({
+                        name: item.name,
+                        image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`
+                    })
+                })
+            )
+            .then(() => setCharactersAPI(pokemons || []));
 
-return (
-    <CharacterPokeList
-        onSelect={handleOnSelect}
-        characters={characters}
-        id={id}
-        header={
-            <StyledControl>
-                <p>Os Primeiros 150 Pokémon</p>
-            </StyledControl>
-        }
-    />
-);
+
+
+    }, [history, page, setCharacters]);
+
+    console.log(characters)
+
+    return (
+        <CharacterPokeList
+            onSelect={handleOnSelect}
+            characters={characters}
+            header={
+                <StyledControl>
+                    <p>Os Primeiros 150 Pokémon</p>
+                </StyledControl>
+            }
+        />
+    );
 };
 
 export default CharactersPoke;

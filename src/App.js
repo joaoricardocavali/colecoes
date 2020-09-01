@@ -6,7 +6,6 @@ import Home from "./pages/home";
 import { MdCollections } from "react-icons/md";
 import { GiMaterialsScience } from "react-icons/gi";
 import { CgPokemon } from 'react-icons/cg'
-
 import styled from "styled-components";
 import "./App.css";
 

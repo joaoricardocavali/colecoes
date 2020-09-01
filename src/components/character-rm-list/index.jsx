@@ -9,16 +9,16 @@ const CharacterRMList = ({ characters, header, onSelect = () => {} }) => {
       <StyledHeader>{header}</StyledHeader>
       <StyledList>
         {characters &&
-          characters.map(({ name, image, species }, key) => (
+          characters.map(({ name, image, type }, key) => (
             <StyledCard
               key={key}
               hoverable
               onClick={() => {
-                onSelect({ name, image, species });
+                onSelect({ name, image, type });
               }}
               cover={<img alt="example" src={image} />}
             >
-              <Card.Meta title={name} description={species} />
+              <Card.Meta title={name} description={type} />
             </StyledCard>
           ))}
       </StyledList>
