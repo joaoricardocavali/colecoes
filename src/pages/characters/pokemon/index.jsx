@@ -7,6 +7,7 @@ const CharactersPoke = ({ setCharacters }) => {
     const { page } = useParams();
     const history = useHistory();
     const [characters, setCharactersAPI] = useState([]);
+    // const [images, setImages] = useState([]);
 
     const handleOnSelect = (newCharacter) => {
 
@@ -21,23 +22,27 @@ const CharactersPoke = ({ setCharacters }) => {
     };
 
     useEffect(() => {
-        if (page < 1) return history.push("/pokemon/1");
-
         fetch(`https://pokeapi.co/api/v2/pokemon?limit=150`)
             .then((res) => res.json())
-            .then(({ results }) => setCharactersAPI(results || []));
+            .then(({ results }) => 
+                setCharactersAPI(results));
+                // setImages(characters.url)
+                
+            
     }, [history, page, setCharacters]);
-
+    // console.log(characters)
     // const url = characters.url
     // const image = ""
     // const brokenUrl = url.split("/");
     // const id = brokenUrl[brokenUrl.length - 1]
-    // setCharactersAPI(...characters, image="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/'{id}'.png")
+    // setCharactersAPI(...characters, image:imagem)
+    const id = 132;
 
 return (
     <CharacterPokeList
         onSelect={handleOnSelect}
         characters={characters}
+        id={id}
         header={
             <StyledControl>
                 <p>Os Primeiros 150 Pokémon</p>
