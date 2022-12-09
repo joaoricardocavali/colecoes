@@ -1,3 +1,11 @@
+### Para acessar: https://colecoes-five.vercel.app/
+Projeto desenvolvido durante o curso de FullStack da Kenzie Academy Brasil.
+No menu superior, aba Coleção pessoal, aba Personagens de Rick & Morty, aba Pookémon. 
+Ao clicar em um card das coleções, adiciona-se o item a Coleção Pessoal.
+
+## Utilizado React e requests em API via Axios.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
